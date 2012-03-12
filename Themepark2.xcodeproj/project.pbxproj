@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D7286635150E318000E3A6E9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7286634150E318000E3A6E9 /* Cocoa.framework */; };
+		D728663F150E318000E3A6E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D728663D150E318000E3A6E9 /* InfoPlist.strings */; };
+		D7286641150E318000E3A6E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7286640150E318000E3A6E9 /* main.m */; };
+		D7286645150E318000E3A6E9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D7286643150E318000E3A6E9 /* Credits.rtf */; };
+		D7286648150E318000E3A6E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7286647150E318000E3A6E9 /* AppDelegate.m */; };
+		D728664B150E318000E3A6E9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7286649150E318000E3A6E9 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D7286630150E318000E3A6E9 /* Themepark2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Themepark2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7286634150E318000E3A6E9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D7286637150E318000E3A6E9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D7286638150E318000E3A6E9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D7286639150E318000E3A6E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D728663C150E318000E3A6E9 /* Themepark2-Info.plist */ = {isa = PBXFileReference; path = "Themepark2-Info.plist"; sourceTree = "<group>"; };
+		D728663E150E318000E3A6E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D7286640150E318000E3A6E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D7286642150E318000E3A6E9 /* Themepark2-Prefix.pch */ = {isa = PBXFileReference; path = "Themepark2-Prefix.pch"; sourceTree = "<group>"; };
+		D7286644150E318000E3A6E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		D7286646150E318000E3A6E9 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		D7286647150E318000E3A6E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D728664A150E318000E3A6E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D728662D150E318000E3A6E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7286635150E318000E3A6E9 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D7286625150E318000E3A6E9 = {
+			isa = PBXGroup;
+			children = (
+				D728663A150E318000E3A6E9 /* Themepark2 */,
+				D7286633150E318000E3A6E9 /* Frameworks */,
+				D7286631150E318000E3A6E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D7286631150E318000E3A6E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7286630150E318000E3A6E9 /* Themepark2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7286633150E318000E3A6E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D7286634150E318000E3A6E9 /* Cocoa.framework */,
+				D7286636150E318000E3A6E9 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D7286636150E318000E3A6E9 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D7286637150E318000E3A6E9 /* AppKit.framework */,
+				D7286638150E318000E3A6E9 /* CoreData.framework */,
+				D7286639150E318000E3A6E9 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		D728663A150E318000E3A6E9 /* Themepark2 */ = {
+			isa = PBXGroup;
+			children = (
+				D7286646150E318000E3A6E9 /* AppDelegate.h */,
+				D7286647150E318000E3A6E9 /* AppDelegate.m */,
+				D7286649150E318000E3A6E9 /* MainMenu.xib */,
+				D728663B150E318000E3A6E9 /* Supporting Files */,
+			);
+			path = Themepark2;
+			sourceTree = "<group>";
+		};
+		D728663B150E318000E3A6E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D728663C150E318000E3A6E9 /* Themepark2-Info.plist */,
+				D728663D150E318000E3A6E9 /* InfoPlist.strings */,
+				D7286640150E318000E3A6E9 /* main.m */,
+				D7286642150E318000E3A6E9 /* Themepark2-Prefix.pch */,
+				D7286643150E318000E3A6E9 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D728662F150E318000E3A6E9 /* Themepark2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D728664E150E318000E3A6E9 /* Build configuration list for PBXNativeTarget "Themepark2" */;
+			buildPhases = (
+				D728662C150E318000E3A6E9 /* Sources */,
+				D728662D150E318000E3A6E9 /* Frameworks */,
+				D728662E150E318000E3A6E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Themepark2;
+			productName = Themepark2;
+			productReference = D7286630150E318000E3A6E9 /* Themepark2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D7286627150E318000E3A6E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = D728662A150E318000E3A6E9 /* Build configuration list for PBXProject "Themepark2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D7286625150E318000E3A6E9;
+			productRefGroup = D7286631150E318000E3A6E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D728662F150E318000E3A6E9 /* Themepark2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D728662E150E318000E3A6E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D728663F150E318000E3A6E9 /* InfoPlist.strings in Resources */,
+				D7286645150E318000E3A6E9 /* Credits.rtf in Resources */,
+				D728664B150E318000E3A6E9 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D728662C150E318000E3A6E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7286641150E318000E3A6E9 /* main.m in Sources */,
+				D7286648150E318000E3A6E9 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D728663D150E318000E3A6E9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D728663E150E318000E3A6E9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D7286643150E318000E3A6E9 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7286644150E318000E3A6E9 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		D7286649150E318000E3A6E9 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D728664A150E318000E3A6E9 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D728664C150E318000E3A6E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D728664D150E318000E3A6E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D728664F150E318000E3A6E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Themepark2/Themepark2-Prefix.pch";
+				INFOPLIST_FILE = "Themepark2/Themepark2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D7286650150E318000E3A6E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Themepark2/Themepark2-Prefix.pch";
+				INFOPLIST_FILE = "Themepark2/Themepark2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D728662A150E318000E3A6E9 /* Build configuration list for PBXProject "Themepark2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D728664C150E318000E3A6E9 /* Debug */,
+				D728664D150E318000E3A6E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D728664E150E318000E3A6E9 /* Build configuration list for PBXNativeTarget "Themepark2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D728664F150E318000E3A6E9 /* Debug */,
+				D7286650150E318000E3A6E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D7286627150E318000E3A6E9 /* Project object */;
+}
