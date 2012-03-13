@@ -11,8 +11,23 @@
 		D728663F150E318000E3A6E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D728663D150E318000E3A6E9 /* InfoPlist.strings */; };
 		D7286641150E318000E3A6E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7286640150E318000E3A6E9 /* main.m */; };
 		D7286645150E318000E3A6E9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D7286643150E318000E3A6E9 /* Credits.rtf */; };
-		D7286648150E318000E3A6E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7286647150E318000E3A6E9 /* AppDelegate.m */; };
+		D7286648150E318000E3A6E9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7286647150E318000E3A6E9 /* AppDelegate.mm */; };
 		D728664B150E318000E3A6E9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7286649150E318000E3A6E9 /* MainMenu.xib */; };
+		D7286653150E31FD00E3A6E9 /* ThemeparkView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7286652150E31FD00E3A6E9 /* ThemeparkView.m */; };
+		D728665F150E6E8700E3A6E9 /* BasicOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7286656150E6E8600E3A6E9 /* BasicOpenGLView.mm */; };
+		D7286660150E6E8700E3A6E9 /* drawInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7286658150E6E8600E3A6E9 /* drawInfo.mm */; };
+		D7286661150E6E8700E3A6E9 /* GLCheck.c in Sources */ = {isa = PBXBuildFile; fileRef = D7286659150E6E8600E3A6E9 /* GLCheck.c */; };
+		D7286662150E6E8700E3A6E9 /* GLString.mm in Sources */ = {isa = PBXBuildFile; fileRef = D728665C150E6E8700E3A6E9 /* GLString.mm */; };
+		D7286663150E6E8700E3A6E9 /* trackball.c in Sources */ = {isa = PBXBuildFile; fileRef = D728665D150E6E8700E3A6E9 /* trackball.c */; };
+		D7286665150E6EB700E3A6E9 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7286664150E6EB700E3A6E9 /* OpenGL.framework */; };
+		D728666B150E732000E3A6E9 /* CubicBspline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D7286667150E732000E3A6E9 /* CubicBspline.cpp */; };
+		D728666F150E734600E3A6E9 /* GenericException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D728666D150E734600E3A6E9 /* GenericException.cpp */; };
+		D7694DC3150EBD450079A474 /* grass-texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7694DC2150EBD450079A474 /* grass-texture.jpg */; };
+		D7694DC7150EBFF10079A474 /* MyGround.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7694DC6150EBFF10079A474 /* MyGround.mm */; };
+		D7694DCD150EC2F40079A474 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7694DCC150EC2F40079A474 /* ApplicationServices.framework */; };
+		D7694DD0150EC6250079A474 /* OpenGLObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7694DCF150EC6250079A474 /* OpenGLObject.mm */; };
+		D7694DD3150FC2B90079A474 /* MyTrack.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7694DD2150FC2B90079A474 /* MyTrack.mm */; };
+		D7C3FEDB150FDE1500B12FA8 /* MyCarousel.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7C3FEDA150FDE1500B12FA8 /* MyCarousel.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +36,45 @@
 		D7286637150E318000E3A6E9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D7286638150E318000E3A6E9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D7286639150E318000E3A6E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D728663C150E318000E3A6E9 /* Themepark2-Info.plist */ = {isa = PBXFileReference; path = "Themepark2-Info.plist"; sourceTree = "<group>"; };
+		D728663C150E318000E3A6E9 /* Themepark2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Themepark2-Info.plist"; sourceTree = "<group>"; };
 		D728663E150E318000E3A6E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7286640150E318000E3A6E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D7286642150E318000E3A6E9 /* Themepark2-Prefix.pch */ = {isa = PBXFileReference; path = "Themepark2-Prefix.pch"; sourceTree = "<group>"; };
+		D7286642150E318000E3A6E9 /* Themepark2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Themepark2-Prefix.pch"; sourceTree = "<group>"; };
 		D7286644150E318000E3A6E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		D7286646150E318000E3A6E9 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
-		D7286647150E318000E3A6E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D7286646150E318000E3A6E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D7286647150E318000E3A6E9 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		D728664A150E318000E3A6E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D7286651150E31FD00E3A6E9 /* ThemeparkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeparkView.h; sourceTree = "<group>"; };
+		D7286652150E31FD00E3A6E9 /* ThemeparkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeparkView.m; sourceTree = "<group>"; };
+		D7286655150E6E8600E3A6E9 /* BasicOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicOpenGLView.h; sourceTree = "<group>"; };
+		D7286656150E6E8600E3A6E9 /* BasicOpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BasicOpenGLView.mm; sourceTree = "<group>"; };
+		D7286657150E6E8600E3A6E9 /* drawInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawInfo.h; sourceTree = "<group>"; };
+		D7286658150E6E8600E3A6E9 /* drawInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = drawInfo.mm; sourceTree = "<group>"; };
+		D7286659150E6E8600E3A6E9 /* GLCheck.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLCheck.c; sourceTree = "<group>"; };
+		D728665A150E6E8600E3A6E9 /* GLCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCheck.h; sourceTree = "<group>"; };
+		D728665B150E6E8600E3A6E9 /* GLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLString.h; sourceTree = "<group>"; };
+		D728665C150E6E8700E3A6E9 /* GLString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLString.mm; sourceTree = "<group>"; };
+		D728665D150E6E8700E3A6E9 /* trackball.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trackball.c; sourceTree = "<group>"; };
+		D728665E150E6E8700E3A6E9 /* trackball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trackball.h; sourceTree = "<group>"; };
+		D7286664150E6EB700E3A6E9 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		D7286667150E732000E3A6E9 /* CubicBspline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubicBspline.cpp; sourceTree = "<group>"; };
+		D7286668150E732000E3A6E9 /* CubicBspline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubicBspline.h; sourceTree = "<group>"; };
+		D7286669150E732000E3A6E9 /* Track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Track.cpp; sourceTree = "<group>"; };
+		D728666A150E732000E3A6E9 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		D728666D150E734600E3A6E9 /* GenericException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GenericException.cpp; sourceTree = "<group>"; };
+		D728666E150E734600E3A6E9 /* GenericException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericException.h; sourceTree = "<group>"; };
+		D7694DBF150EA09B0079A474 /* Ground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ground.cpp; sourceTree = "<group>"; };
+		D7694DC0150EA09C0079A474 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ground.h; sourceTree = "<group>"; };
+		D7694DC2150EBD450079A474 /* grass-texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grass-texture.jpg"; sourceTree = "<group>"; };
+		D7694DC5150EBFF10079A474 /* MyGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGround.h; sourceTree = "<group>"; };
+		D7694DC6150EBFF10079A474 /* MyGround.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyGround.mm; sourceTree = "<group>"; };
+		D7694DCC150EC2F40079A474 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		D7694DCE150EC6250079A474 /* OpenGLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLObject.h; sourceTree = "<group>"; };
+		D7694DCF150EC6250079A474 /* OpenGLObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLObject.mm; sourceTree = "<group>"; };
+		D7694DD1150FC2B80079A474 /* MyTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTrack.h; sourceTree = "<group>"; };
+		D7694DD2150FC2B90079A474 /* MyTrack.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyTrack.mm; sourceTree = "<group>"; };
+		D7C3FED9150FDE1500B12FA8 /* MyCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCarousel.h; sourceTree = "<group>"; };
+		D7C3FEDA150FDE1500B12FA8 /* MyCarousel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyCarousel.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7694DCD150EC2F40079A474 /* ApplicationServices.framework in Frameworks */,
+				D7286665150E6EB700E3A6E9 /* OpenGL.framework in Frameworks */,
 				D7286635150E318000E3A6E9 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +111,8 @@
 		D7286633150E318000E3A6E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7694DCC150EC2F40079A474 /* ApplicationServices.framework */,
+				D7286664150E6EB700E3A6E9 /* OpenGL.framework */,
 				D7286634150E318000E3A6E9 /* Cocoa.framework */,
 				D7286636150E318000E3A6E9 /* Other Frameworks */,
 			);
@@ -82,10 +132,16 @@
 		D728663A150E318000E3A6E9 /* Themepark2 */ = {
 			isa = PBXGroup;
 			children = (
+				D7694DD4150FC2C30079A474 /* OpenGlObjects */,
+				D7694DC4150EBD550079A474 /* Textures */,
+				D7286666150E730400E3A6E9 /* Files from project 2 skeleton */,
+				D7286654150E6E6800E3A6E9 /* Files from cocoagl */,
 				D7286646150E318000E3A6E9 /* AppDelegate.h */,
-				D7286647150E318000E3A6E9 /* AppDelegate.m */,
+				D7286647150E318000E3A6E9 /* AppDelegate.mm */,
 				D7286649150E318000E3A6E9 /* MainMenu.xib */,
 				D728663B150E318000E3A6E9 /* Supporting Files */,
+				D7286651150E31FD00E3A6E9 /* ThemeparkView.h */,
+				D7286652150E31FD00E3A6E9 /* ThemeparkView.m */,
 			);
 			path = Themepark2;
 			sourceTree = "<group>";
@@ -100,6 +156,61 @@
 				D7286643150E318000E3A6E9 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7286654150E6E6800E3A6E9 /* Files from cocoagl */ = {
+			isa = PBXGroup;
+			children = (
+				D7286655150E6E8600E3A6E9 /* BasicOpenGLView.h */,
+				D7286656150E6E8600E3A6E9 /* BasicOpenGLView.mm */,
+				D7286657150E6E8600E3A6E9 /* drawInfo.h */,
+				D7286658150E6E8600E3A6E9 /* drawInfo.mm */,
+				D7286659150E6E8600E3A6E9 /* GLCheck.c */,
+				D728665A150E6E8600E3A6E9 /* GLCheck.h */,
+				D728665B150E6E8600E3A6E9 /* GLString.h */,
+				D728665C150E6E8700E3A6E9 /* GLString.mm */,
+				D728665D150E6E8700E3A6E9 /* trackball.c */,
+				D728665E150E6E8700E3A6E9 /* trackball.h */,
+			);
+			name = "Files from cocoagl";
+			sourceTree = "<group>";
+		};
+		D7286666150E730400E3A6E9 /* Files from project 2 skeleton */ = {
+			isa = PBXGroup;
+			children = (
+				D7694DC0150EA09C0079A474 /* Ground.h */,
+				D7694DBF150EA09B0079A474 /* Ground.cpp */,
+				D728666D150E734600E3A6E9 /* GenericException.cpp */,
+				D728666E150E734600E3A6E9 /* GenericException.h */,
+				D7286667150E732000E3A6E9 /* CubicBspline.cpp */,
+				D7286668150E732000E3A6E9 /* CubicBspline.h */,
+				D7286669150E732000E3A6E9 /* Track.cpp */,
+				D728666A150E732000E3A6E9 /* Track.h */,
+			);
+			name = "Files from project 2 skeleton";
+			sourceTree = "<group>";
+		};
+		D7694DC4150EBD550079A474 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				D7694DC2150EBD450079A474 /* grass-texture.jpg */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
+		};
+		D7694DD4150FC2C30079A474 /* OpenGlObjects */ = {
+			isa = PBXGroup;
+			children = (
+				D7694DC5150EBFF10079A474 /* MyGround.h */,
+				D7694DC6150EBFF10079A474 /* MyGround.mm */,
+				D7C3FED9150FDE1500B12FA8 /* MyCarousel.h */,
+				D7C3FEDA150FDE1500B12FA8 /* MyCarousel.mm */,
+				D7694DCE150EC6250079A474 /* OpenGLObject.h */,
+				D7694DCF150EC6250079A474 /* OpenGLObject.mm */,
+				D7694DD1150FC2B80079A474 /* MyTrack.h */,
+				D7694DD2150FC2B90079A474 /* MyTrack.mm */,
+			);
+			name = OpenGlObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +266,7 @@
 				D728663F150E318000E3A6E9 /* InfoPlist.strings in Resources */,
 				D7286645150E318000E3A6E9 /* Credits.rtf in Resources */,
 				D728664B150E318000E3A6E9 /* MainMenu.xib in Resources */,
+				D7694DC3150EBD450079A474 /* grass-texture.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +278,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7286641150E318000E3A6E9 /* main.m in Sources */,
-				D7286648150E318000E3A6E9 /* AppDelegate.m in Sources */,
+				D7286648150E318000E3A6E9 /* AppDelegate.mm in Sources */,
+				D7286653150E31FD00E3A6E9 /* ThemeparkView.m in Sources */,
+				D728665F150E6E8700E3A6E9 /* BasicOpenGLView.mm in Sources */,
+				D7286660150E6E8700E3A6E9 /* drawInfo.mm in Sources */,
+				D7286661150E6E8700E3A6E9 /* GLCheck.c in Sources */,
+				D7286662150E6E8700E3A6E9 /* GLString.mm in Sources */,
+				D7286663150E6E8700E3A6E9 /* trackball.c in Sources */,
+				D728666B150E732000E3A6E9 /* CubicBspline.cpp in Sources */,
+				D728666F150E734600E3A6E9 /* GenericException.cpp in Sources */,
+				D7694DC7150EBFF10079A474 /* MyGround.mm in Sources */,
+				D7694DD0150EC6250079A474 /* OpenGLObject.mm in Sources */,
+				D7694DD3150FC2B90079A474 /* MyTrack.mm in Sources */,
+				D7C3FEDB150FDE1500B12FA8 /* MyCarousel.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +410,7 @@
 				D7286650150E318000E3A6E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
