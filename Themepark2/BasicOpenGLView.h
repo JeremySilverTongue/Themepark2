@@ -51,11 +51,15 @@
 #import <OpenGL/gl.h>
 #import <OpenGL/glext.h>
 #import <OpenGL/glu.h>
+#import <SceneKit/SceneKit.h>
 
 #import "GLString.h"
 #import "MyGround.h"
 #import "MyTrack.h"
 #import "MyCarousel.h"
+#import "MyCamera.h"
+#import "MySidewalk.h"
+#import "TentOfRevolution.h"
 
 typedef struct {
    GLdouble x,y,z;
@@ -72,6 +76,8 @@ typedef struct {
 
 @interface BasicOpenGLView : NSOpenGLView
 {
+    SCNRenderer *faceRenderer;
+    
 	// string attributes
 	NSMutableDictionary * stanStringAttrib;
 	
@@ -99,16 +105,47 @@ typedef struct {
 	GLfloat rVel [3];
 	GLfloat rAccel [3];
 	
-	// camera handling
-	recCamera camera;
-	GLfloat worldRotation [4];
-	GLfloat objectRotation [4];
-	GLfloat shapeSize;
+    
+    // My camera
+    MyCamera* camera;
+    
+    bool followingTrain;
+    bool trainChase;
+    bool lookAtCarousel;
+    
+    bool strafingLeft;
+    bool strafingRight;
+    bool movingForward;
+    bool movingBackward;
+    bool movingUp;
+    bool movingDown;
+    
+    bool panningLeft;
+    bool panningRight;
+    bool panningUp;
+    bool panningDown;
+    
+    
+    
+//	// camera handling
+//	recCamera camera;
+//	GLfloat worldRotation [4];
+//	GLfloat objectRotation [4];
+//	GLfloat shapeSize;
+//    float cameraMoveSpeed;
+    
+    float	phi;	// Viewer's inclination angle.
+	float	theta;	// Viewer's azimuthal angle.
+	float	dist;	// Viewer's distance from the look-at point.
+	float	x_at;	// The x-coord to look at.
+	float	y_at;	// The y-coord to look at. z_at is assumed 2.0.
     
     //Objects
     MyGround* ground;
     MyTrack* track;
     MyCarousel* carousel;
+    MySidewalk* sidewalk;
+    TentOfRevolution* tent;
 	
 }
 
@@ -119,7 +156,11 @@ typedef struct {
 - (void) resizeGL;
 - (void) resetCamera;
 
-- (void) updateObjectRotationForTimeDelta:(CFAbsoluteTime)deltaTime;
+
+
+- (void) updateObjectsForTimeDelta: (CFAbsoluteTime) deltaTime;
+- (void) updateCameraForTimeDelta: (CFAbsoluteTime) deltaTime;
+
 - (void)animationTimer:(NSTimer *)timer;
 
 - (void) createHelpString;
@@ -132,6 +173,7 @@ typedef struct {
 -(IBAction) info: (id) sender;
 
 - (void)keyDown:(NSEvent *)theEvent;
+- (void)keyUp:(NSEvent *)theEvent;
 
 - (void) mouseDown:(NSEvent *)theEvent;
 - (void) rightMouseDown:(NSEvent *)theEvent;

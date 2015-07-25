@@ -11,20 +11,18 @@
 @implementation MyTrack
 
 
-- (void) Normalize_3: (float*) v{
-    double  l = sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
-    if ( l == 0.0 )
-        return;
-    v[0] /= (float)l;
-    v[1] /= (float)l;
-    v[2] /= (float)l;
-}
+
 
 
 
 - (id) init {
     self = [super init];
     initialized = false; posn_on_track = 0.0f; speed = 0.0f;
+    
+    cars = [[NSMutableArray alloc] initWithCapacity:8];
+    for (int horseIndex=0; horseIndex<4; horseIndex++) {
+        [cars addObject:[[MyTrainCar alloc] init]];
+    }
     return self;
 }
 
@@ -44,7 +42,7 @@
     // track spline control points
     TRACK_NUM_CONTROLS = 4;
     // The carriage energy and mass
-    TRAIN_ENERGY = 500.0f;
+    TRAIN_ENERGY = 0.0f;
     
     
     
@@ -58,14 +56,19 @@
 //    for ( i = 0 ; i < TRACK_NUM_CONTROLS ; i++ )
 //        track->Append_Control(TRACK_CONTROLS[i]);
 
-    track->Append_Control((float[3]){ -20.0, -20.0, -18.0 });
-    track->Append_Control((float[3]){ 20.0, -20.0, 40.0 });
-    track->Append_Control((float[3]){ 20.0, 20.0, -18.0 });
-    track->Append_Control((float[3]){ -20.0, -20.0, 40.0 });
-    track->Append_Control((float[3]){ 40.0, 40.0, 40.0 });
+    track->Append_Control((float[3]){ 0, 0,1 });
+    track->Append_Control((float[3]){ 20.0, 0, 1});
+    track->Append_Control((float[3]){ 30.0, 10.0, 1 });
+    track->Append_Control((float[3]){ 20.0, 20.0, 1 });
     
-    
-    
+    track->Append_Control((float[3]){ 10.0, 20.0, 10.0 });
+    track->Append_Control((float[3]){ 0.0, 20.0, 30.0 });
+    track->Append_Control((float[3]){ -10.0, 20.0, 1 });
+    track->Append_Control((float[3]){ -20.0, 20.0, 1 });
+    track->Append_Control((float[3]){ -30.0, 20.0, 1.0 });
+    track->Append_Control((float[3]){ -30.0, 00.0, 1.0 });
+    track->Append_Control((float[3]){ -20.0, 00.0, 1.0 });
+    track->Append_Control((float[3]){ -10.0, 00.0, 10.0 });
     
     
     // Refine it down to a fixed tolerance. This means that any point on
@@ -74,108 +77,90 @@
     track->Refine_Tolerance(refined, 0.1f);
     n_refined = refined.N();
     
-    // Create the display list for the track - just a set of line segments
-    // We just use curve evaluated at integer paramer values, because the
-    // subdivision has made sure that these are good enough.
+    
     track_list = glGenLists(1);
     glNewList(track_list, GL_COMPILE);
-	glColor3f(0.0f, 1.0, 1.0f);
+	glColor3f(0.0f, 1.0, 0.0f);
 	glBegin(GL_LINE_STRIP);
     for ( i = 0 ; i <= n_refined ; i++ )
     {
 		refined.Evaluate_Point((float)i, p);
+        
+        
+        
+        
 		glVertex3fv(p);
     }
 	glEnd();
     glEndList();
+
+
     
-    // Set up the train. At this point a cube is drawn. NOTE: The
-    // x-axis will be aligned to point along the track. The origin of the
-    // train is assumed to be at the bottom of the train.
-    train_list = glGenLists(1);
-    glNewList(train_list, GL_COMPILE);
-    glColor3f(1.0, 0.0, 0.0);
-    glBegin(GL_QUADS);
-	glNormal3f(0.0f, 0.0f, 1.0f);
-	glVertex3f(0.5f, 0.5f, 1.0f);
-	glVertex3f(-0.5f, 0.5f, 1.0f);
-	glVertex3f(-0.5f, -0.5f, 1.0f);
-	glVertex3f(0.5f, -0.5f, 1.0f);
+//    float rail1[4]
+//    
+//    
+//    track_list = glGenLists(1);
+//    glNewList(track_list, GL_COMPILE);
+//	glColor3f(0.0f, 1.0, 0.0f);
+//    
+//    float oldpoint[3],newpoint[3];
+//    
+//    refined.Evaluate_Point((float)i, oldpoint);
+//    
+//    
+//    for ( i = 0 ; i <= n_refined ; i++ )
+//    {
+//		refined.Evaluate_Point((float)i, newpoint);
+//        
+//        
+//        
+//        
+//        glBegin(GL_TRIANGLE_STRIP);
+//        
+//        
+//        glVertex3d(<#GLdouble x#>, <#GLdouble y#>, <#GLdouble z#>)
+//        
+//        
+//        
+//        
+//		glVertex3fv(p);
+//        
+//        glEnd();
+//    }
+//	
+//    glEndList();
     
-	glNormal3f(0.0f, 0.0f, -1.0f);
-	glVertex3f(0.5f, -0.5f, 0.0f);
-	glVertex3f(-0.5f, -0.5f, 0.0f);
-	glVertex3f(-0.5f, 0.5f, 0.0f);
-	glVertex3f(0.5f, 0.5f, 0.0f);
     
-	glNormal3f(1.0f, 0.0f, 0.0f);
-	glVertex3f(0.5f, 0.5f, 0.0f);
-	glVertex3f(0.5f, 0.5f, 1.0f);
-	glVertex3f(0.5f, -0.5f, 1.0f);
-	glVertex3f(0.5f, -0.5f, 0.0f);
     
-	glNormal3f(-1.0f, 0.0f, 0.0f);
-	glVertex3f(-0.5f, 0.5f, 1.0f);
-	glVertex3f(-0.5f, 0.5f, 0.0f);
-	glVertex3f(-0.5f, -0.5f, 0.0f);
-	glVertex3f(-0.5f, -0.5f, 1.0f);
     
-	glNormal3f(0.0f, 1.0f, 0.0f);
-	glVertex3f(0.5f, 0.5f, 1.0f);
-	glVertex3f(0.5f, 0.5f, 0.0f);
-	glVertex3f(-0.5f, 0.5f, 0.0f);
-	glVertex3f(-0.5f, 0.5f, 1.0f);
     
-	glNormal3f(0.0f, -1.0f, 0.0f);
-	glVertex3f(0.5f, -0.5f, 0.0f);
-	glVertex3f(0.5f, -0.5f, 1.0f);
-	glVertex3f(-0.5f, -0.5f, 1.0f);
-	glVertex3f(-0.5f, -0.5f, 0.0f);
-    glEnd();
-    glEndList();
+    
+    
+    for (MyTrainCar* car in cars) {
+        [car initialize];
+    }
+    
+    
     
     initialized = true;
     
     return true;
 }
 
-- (void) draw{
-    float   posn[3];
-    float   tangent[3];
-    double  angle;
-    
+- (void) draw{    
     if ( ! initialized )
         return;
-    
     glPushMatrix();
-    
-    // Draw the track
     glCallList(track_list);
+    int carIndex=0;
+    for (MyTrainCar* car in cars) {
+        [car drawOnTrack: track atPosition: posn_on_track carNumber:carIndex];
+        carIndex++;
+    }
     
-    glPushMatrix();
+
     
-    // Figure out where the train is
-    track->Evaluate_Point(posn_on_track, posn);
     
-    // Translate the train to the point
-    glTranslatef(posn[0], posn[1], posn[2]);
-    
-    // ...and what it's orientation is
-    track->Evaluate_Derivative(posn_on_track, tangent);
-    [self Normalize_3: tangent];
-    
-    // Rotate it to poitn along the track, but stay horizontal
-    angle = atan2(tangent[1], tangent[0]) * 180.0 / M_PI;
-    glRotatef((float)angle, 0.0f, 0.0f, 1.0f);
-    
-    // Another rotation to get the tilt right.
-    angle = asin(-tangent[2]) * 180.0 / M_PI;
-    glRotatef((float)angle, 0.0f, 1.0f, 0.0f);
-    
-    // Draw the train
-    glCallList(train_list);
-    
-    glPopMatrix();
     glPopMatrix();
 }
 
@@ -190,48 +175,70 @@
     
     if ( ! initialized )
         return;
-    
-    // First we move the train along the track with its current speed.
-    
-    // Get the derivative at the current location on the track.
+
     track->Evaluate_Derivative(posn_on_track, deriv);
-    
-    // Get its length.
     length = sqrt(deriv[0]*deriv[0] + deriv[1]*deriv[1] + deriv[2]*deriv[2]);
     if ( length == 0.0 )
         return;
-    
-    // The parametric speed is the world train speed divided by the length
-    // of the tangent vector.
     parametric_speed = speed / length;
-    
-    // Now just evaluate dist = speed * time, for the parameter.
     posn_on_track += (float)(parametric_speed * dt);
-    
-    // If we've just gone around the track, reset back to the start.
     if ( posn_on_track > track->N() )
         posn_on_track -= track->N();
-    
-    // As the second step, we use conservation of energy to set the speed
-    // for the next time.
-    // The total energy = z * gravity + 1/2 speed * speed, assuming unit mass
-    
-
-    TRAIN_ENERGY-=.1;
-    
     track->Evaluate_Point(posn_on_track, point);
-    if ( TRAIN_ENERGY - 9.81 * point[2] < 0.0 ){
-        speed = 0.0;
-    TRAIN_ENERGY= 9.81 * point[2]+10;
+    if ( TRAIN_ENERGY - 9.81 * point[2] < 1.0 ){
+        TRAIN_ENERGY= 9.81 * point[2]+15;
     }
-    else
-        speed = (float)sqrt(2.0 * ( TRAIN_ENERGY - 9.81 * point[2] ));
-    
+    speed = (float)sqrt(2.0 * ( TRAIN_ENERGY - 9.81 * point[2] ));
+    TRAIN_ENERGY-=.05*speed*speed*dt;
+}
 
+- (void) moveCameraToChaseCar: (MyCamera*) camera{
+    float   point[3];
+    float   deriv[3];
+    track->Evaluate_Derivative(posn_on_track, deriv);
+    track->Evaluate_Point(posn_on_track, point);
     
+    if (deriv[2]<0) {
+        [camera setPositionX:point[0]-.5*deriv[0]
+                   positionY:point[1]-.5*deriv[1]
+                   positionZ:point[2]-.8*deriv[2]+2 
+                  directionX:deriv[0]
+                  directionY:deriv[1]
+                  directionZ:deriv[2]-2
+     ];
+    } else {
+        [camera setPositionX:point[0]-.5*deriv[0]
+                   positionY:point[1]-.5*deriv[1]
+                   positionZ:point[2]-.1*deriv[2]+2 
+                  directionX:deriv[0]
+                  directionY:deriv[1]
+                  directionZ:.3*deriv[2]-2
+         ];
+    }
+    
+    
+    
+//    NSLog(@"%@",camera);
     
 }
 
+- (void) moveCameraToCar: (MyCamera*) camera{
+    float   point[3];
+    float   deriv[3];
+    track->Evaluate_Derivative(posn_on_track, deriv);
+    track->Evaluate_Point(posn_on_track, point);
+    
+    
+    [camera setPositionX:point[0]+.1*deriv[0]
+               positionY:point[1]+.1*deriv[1]
+               positionZ:point[2]+1 
+              directionX:deriv[0]
+              directionY:deriv[1]
+              directionZ:deriv[2]
+     ];
+//    NSLog(@"%@",camera);
+    
+}
 
 
 

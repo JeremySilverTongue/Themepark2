@@ -51,6 +51,7 @@
 #import "GLCheck.h"
 #import "trackball.h"
 #import "drawinfo.h"
+#import <SceneKit/SceneKit.h>
 
 // ==================================
 
@@ -212,36 +213,14 @@ static void drawCube (GLfloat fSize)
 // update the projection matrix based on camera and view info
 - (void) updateProjection
 {
-	GLdouble ratio, radians, wd2;
-	GLdouble left, right, top, bottom, near, far;
+    glMatrixMode (GL_PROJECTION);
+    glLoadIdentity ();
+//    gluPerspective([camera aperature],[camera viewWidth] / (float) [camera viewWidth], 1.0, 1000.0);
+    
+    NSLog(@"Camera aperature: %f",[camera aperature]);
+    
+    gluPerspective(45,[camera viewWidth] / (float) [camera viewHeight], 1.0, 1000.0);
 
-    [[self openGLContext] makeCurrentContext];
-
-	// set projection
-	glMatrixMode (GL_PROJECTION);
-	glLoadIdentity ();
-	near = -camera.viewPos.z - shapeSize * 0.5;
-	if (near < 0.00001)
-		near = 0.00001;
-	far = -camera.viewPos.z + shapeSize * 0.5;
-	if (far < 1.0)
-		far = 1.0;
-	radians = 0.0174532925 * camera.aperture / 2; // half aperture degrees to radians 
-	wd2 = near * tan(radians);
-	ratio = camera.viewWidth / (float) camera.viewHeight;
-	if (ratio >= 1.0) {
-		left  = -ratio * wd2;
-		right = ratio * wd2;
-		top = wd2;
-		bottom = -wd2;	
-	} else {
-		left  = -wd2;
-		right = wd2;
-		top = wd2 / ratio;
-		bottom = -wd2 / ratio;	
-	}
-	glFrustum (left, right, bottom, top, near, far);
-	[self updateCameraString];
 }
 
 // ---------------------------------
@@ -250,47 +229,28 @@ static void drawCube (GLfloat fSize)
 - (void) updateModelView
 {
     [[self openGLContext] makeCurrentContext];
-	
-	// move view
-	glMatrixMode (GL_MODELVIEW);
-	glLoadIdentity ();
-	gluLookAt (camera.viewPos.x, camera.viewPos.y, camera.viewPos.z,
-			   camera.viewPos.x + camera.viewDir.x,
-			   camera.viewPos.y + camera.viewDir.y,
-			   camera.viewPos.z + camera.viewDir.z,
-			   camera.viewUp.x, camera.viewUp.y ,camera.viewUp.z);
-			
-	// if we have trackball rotation to map (this IS the test I want as it can be explicitly 0.0f)
-	if ((gTrackingViewInfo == self) && gTrackBallRotation[0] != 0.0f) 
-		glRotatef (gTrackBallRotation[0], gTrackBallRotation[1], gTrackBallRotation[2], gTrackBallRotation[3]);
-	else {
-	}
-	// accumlated world rotation via trackball
-	glRotatef (worldRotation[0], worldRotation[1], worldRotation[2], worldRotation[3]);
-	// object itself rotating applied after camera rotation
-	glRotatef (objectRotation[0], objectRotation[1], objectRotation[2], objectRotation[3]);
-	rRot[0] = 0.0f; // reset animation rotations (do in all cases to prevent rotating while moving with trackball)
-	rRot[1] = 0.0f;
-	rRot[2] = 0.0f;
-	[self updateCameraString];
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt([[camera viewPosition] x],
+              [[camera viewPosition] y],
+              [[camera viewPosition] z],
+              [[camera viewDirection] x]+[[camera viewPosition] x],
+              [[camera viewDirection] y]+[[camera viewPosition] y],
+              [[camera viewDirection] z]+[[camera viewPosition] z],
+              0.0,
+              0.0,
+              1.0);
 }
 
-// ---------------------------------
-
-// handles resizing of GL need context update and if the window dimensions change, a
-// a window dimension update, reseting of viewport and an update of the projection matrix
 - (void) resizeGL
 {
 	NSRect rectView = [self bounds];
-	
-	// ensure camera knows size changed
-	if ((camera.viewHeight != rectView.size.height) ||
-	    (camera.viewWidth != rectView.size.width)) {
-		camera.viewHeight = rectView.size.height;
-		camera.viewWidth = rectView.size.width;
-		
-		glViewport (0, 0, camera.viewWidth, camera.viewHeight);
-		[self updateProjection];  // update projection matrix
+	if (([camera viewHeight] != rectView.size.height) ||
+	    ([camera viewWidth] != rectView.size.width)) {
+		[camera setViewHeight: rectView.size.height];
+        [camera setViewWidth: rectView.size.width];
+		glViewport (0, 0, [camera viewWidth], [camera viewHeight]);
+		[self updateProjection];
 		[self updateInfoString];
 	}
 }
@@ -300,12 +260,12 @@ static void drawCube (GLfloat fSize)
 // move camera in z axis
 -(void)mouseDolly: (NSPoint) location
 {
-	GLfloat dolly = (gDollyPanStartPoint[1] -location.y) * -camera.viewPos.z / 300.0f;
-	camera.viewPos.z += dolly;
-	if (camera.viewPos.z == 0.0) // do not let z = 0.0
-		camera.viewPos.z = 0.0001;
-	gDollyPanStartPoint[0] = location.x;
-	gDollyPanStartPoint[1] = location.y;
+//	GLfloat dolly = (gDollyPanStartPoint[1] -location.y) * -camera.viewPos.z / 300.0f;
+//	camera.viewPos.z += dolly;
+//	if (camera.viewPos.z == 0.0) // do not let z = 0.0
+//		camera.viewPos.z = 0.0001;
+//	gDollyPanStartPoint[0] = location.x;
+//	gDollyPanStartPoint[1] = location.y;
 }
 	
 // ---------------------------------
@@ -313,12 +273,15 @@ static void drawCube (GLfloat fSize)
 // move camera in x/y plane
 - (void)mousePan: (NSPoint) location
 {
-	GLfloat panX = (gDollyPanStartPoint[0] - location.x) / (900.0f / -camera.viewPos.z);
-	GLfloat panY = (gDollyPanStartPoint[1] - location.y) / (900.0f / -camera.viewPos.z);
-	camera.viewPos.x -= panX;
-	camera.viewPos.y -= panY;
-	gDollyPanStartPoint[0] = location.x;
-	gDollyPanStartPoint[1] = location.y;
+//	GLfloat panX = (gDollyPanStartPoint[0] - location.x) / (900.0f / -camera.viewPos.z);
+//	GLfloat panY = (gDollyPanStartPoint[1] - location.y) / (900.0f / -camera.viewPos.z);
+////	camera.viewPos.x -= panX;
+////	camera.viewPos.y -= panY;
+//    x_at -= panX;
+//    y_at -= panY;
+//	
+//    gDollyPanStartPoint[0] = location.x;
+//	gDollyPanStartPoint[1] = location.y;
 }
 
 // ---------------------------------
@@ -326,55 +289,92 @@ static void drawCube (GLfloat fSize)
 // sets the camera data to initial conditions
 - (void) resetCamera
 {
-   camera.aperture = 40;
-   camera.rotPoint = gOrigin;
 
-   camera.viewPos.x = 10.0;
-   camera.viewPos.y = 10.0;
-   camera.viewPos.z = -100.0;
-   camera.viewDir.x = -camera.viewPos.x; 
-   camera.viewDir.y = -camera.viewPos.y; 
-   camera.viewDir.z = -camera.viewPos.z;
-
-   camera.viewUp.x = 0;  
-   camera.viewUp.y = 1; 
-   camera.viewUp.z = 0;
 }
 
 // ---------------------------------
 
 // given a delta time in seconds and current rotation accel, velocity and position, update overall object rotation
-- (void) updateObjectRotationForTimeDelta:(CFAbsoluteTime)deltaTime
-{
+
+
+- (void) updateObjectsForTimeDelta:(CFAbsoluteTime)deltaTime{
     [track update:(float) deltaTime];
-    [carousel update:(float) deltaTime];
+    [carousel update:(float) deltaTime];    
 }
+
+- (void) updateCameraForTimeDelta:(CFAbsoluteTime)deltaTime{
+    if (followingTrain) {
+        [track moveCameraToCar:camera];
+    }
+    if (trainChase) {
+        
+        [track moveCameraToChaseCar:camera];
+    }
+    
+    if (lookAtCarousel) {
+        lookAtCarousel=FALSE;
+        trainChase = FALSE;
+        followingTrain = FALSE;
+        [camera setPositionX:-40 positionY:-40 positionZ:10 directionX:1 directionY:1 directionZ:-.5];
+    }
+    
+    
+    
+    if (strafingLeft) {
+        [camera strafeLeftForDuration:deltaTime];
+    }
+    if (strafingRight) {
+        [camera strafeRightForDuration:deltaTime];
+    }
+    if (movingForward) {
+        [camera moveForwardForDuration:deltaTime];
+    }
+    if (movingBackward) {
+        [camera moveBackwardForDuration:deltaTime];
+    }
+    if (movingUp) {
+        [camera moveUpForDuration:deltaTime];
+    }
+    if (movingDown) {
+        [camera moveDownForDuration:deltaTime];
+    }
+    if (panningUp) {
+        [camera panUpForDuration:deltaTime];
+    }
+    if (panningDown) {
+        [camera panDownForDuration:deltaTime];
+    }
+    if (panningLeft) {
+        [camera panLeftForDuration:deltaTime];
+    }
+    if (panningRight) {
+        [camera panRightForDuration:deltaTime];
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
 
 // ---------------------------------
 
 // per-window timer function, basic time based animation preformed here
 - (void)animationTimer:(NSTimer *)timer
 {
-	BOOL shouldDraw = NO;
-	if (fAnimate) {
-		CFTimeInterval deltaTime = CFAbsoluteTimeGetCurrent () - time;
-			
-		if (deltaTime > 10.0) // skip pauses
-			return;
-		else {
-			// if we are not rotating with trackball in this window
-			if (!gTrackball || (gTrackingViewInfo != self)) {
-				[self updateObjectRotationForTimeDelta: deltaTime]; // update object rotation
-			}
-			shouldDraw = YES; // force redraw
-		}
-	}
+    CFTimeInterval deltaTime = CFAbsoluteTimeGetCurrent () - time;
+    if (deltaTime < 10.0) {
+        [self updateObjectsForTimeDelta:deltaTime];
+        [self updateCameraForTimeDelta:deltaTime];
+    }
 	time = CFAbsoluteTimeGetCurrent (); //reset time in all cases
-	// if we have current messages
-	if (((getElapsedTime () - msgTime) < gMsgPresistance) || ((getElapsedTime () - gErrorTime) < gMsgPresistance))
-		shouldDraw = YES; // force redraw
-	if (YES == shouldDraw) 
-		[self drawRect:[self bounds]]; // redraw now instead dirty to enable updates during live resize
+    [self drawRect:[self bounds]]; // redraw now instead dirty to enable updates during live resize
 }
 
 #pragma mark ---- Text Drawing ----
@@ -411,33 +411,33 @@ static void drawCube (GLfloat fSize)
 
 - (void) updateCameraString
 { // update info string texture
-	static recCamera savedCamera; 
-	
-	// This is a compromise between a heavy comparison
-	// and updating the camera texture when not needed
-	// what is faster the comparison or the texture update
-	// only empirical data on a particular configuration
-	// will yield a real answer
-	
-	if  ( (savedCamera.viewPos.x == camera.viewPos.x) &&
-		  (savedCamera.viewPos.y == camera.viewPos.y) &&
-		  (savedCamera.viewPos.z == camera.viewPos.z) &&
-		  (savedCamera.viewDir.x == camera.viewDir.x) &&
-		  (savedCamera.viewDir.y == camera.viewDir.y) &&
-		  (savedCamera.viewDir.z == camera.viewDir.z) &&
-		  (savedCamera.aperture == camera.aperture) )
-	{
-		return; // Don't update texture! (which usually is more expensive than the comparison above)
-	} else {
-		NSString * string = [NSString stringWithFormat:@"Camera at (%0.1f, %0.1f, %0.1f) looking at (%0.1f, %0.1f, %0.1f) with %0.1f aperture", camera.viewPos.x, camera.viewPos.y, camera.viewPos.z, camera.viewDir.x, camera.viewDir.y, camera.viewDir.z, camera.aperture];
-		if (camStringTex)
-			[camStringTex setString:string withAttributes:stanStringAttrib];
-		else {
-			camStringTex = [[GLString alloc] initWithString:string withAttributes:stanStringAttrib withTextColor:[NSColor colorWithDeviceRed:1.0f green:1.0f blue:1.0f alpha:1.0f] withBoxColor:[NSColor colorWithDeviceRed:0.5f green:0.5f blue:0.5f alpha:0.5f] withBorderColor:[NSColor colorWithDeviceRed:0.8f green:0.8f blue:0.8f alpha:0.8f]];
-		}
-	}
-	
-	savedCamera = camera;
+//	static recCamera savedCamera; 
+//	
+//	// This is a compromise between a heavy comparison
+//	// and updating the camera texture when not needed
+//	// what is faster the comparison or the texture update
+//	// only empirical data on a particular configuration
+//	// will yield a real answer
+//	
+//	if  ( (savedCamera.viewPos.x == camera.viewPos.x) &&
+//		  (savedCamera.viewPos.y == camera.viewPos.y) &&
+//		  (savedCamera.viewPos.z == camera.viewPos.z) &&
+//		  (savedCamera.viewDir.x == camera.viewDir.x) &&
+//		  (savedCamera.viewDir.y == camera.viewDir.y) &&
+//		  (savedCamera.viewDir.z == camera.viewDir.z) &&
+//		  (savedCamera.aperture == camera.aperture) )
+//	{
+//		return; // Don't update texture! (which usually is more expensive than the comparison above)
+//	} else {
+//		NSString * string = [NSString stringWithFormat:@"Camera at (%0.1f, %0.1f, %0.1f) looking at (%0.1f, %0.1f, %0.1f) with %0.1f aperture", camera.viewPos.x, camera.viewPos.y, camera.viewPos.z, camera.viewDir.x, camera.viewDir.y, camera.viewDir.z, camera.aperture];
+//		if (camStringTex)
+//			[camStringTex setString:string withAttributes:stanStringAttrib];
+//		else {
+//			camStringTex = [[GLString alloc] initWithString:string withAttributes:stanStringAttrib withTextColor:[NSColor colorWithDeviceRed:1.0f green:1.0f blue:1.0f alpha:1.0f] withBoxColor:[NSColor colorWithDeviceRed:0.5f green:0.5f blue:0.5f alpha:0.5f] withBorderColor:[NSColor colorWithDeviceRed:0.8f green:0.8f blue:0.8f alpha:0.8f]];
+//		}
+//	}
+//	
+//	savedCamera = camera;
 }
 
 // ---------------------------------
@@ -533,31 +533,114 @@ static void drawCube (GLfloat fSize)
 -(void)keyDown:(NSEvent *)theEvent
 {
     NSString *characters = [theEvent characters];
+    unichar character;
+    if ([characters length]) {
+        for (int charIndex=0; charIndex<[characters length]; charIndex++) {
+            character = [characters characterAtIndex:charIndex];
+            switch (character) {
+                case 'w':
+                    movingForward= TRUE;
+                    break;
+                case 'a':
+                    strafingLeft=TRUE;
+                    break;
+                case 's':
+                    movingBackward=TRUE;
+                    break;
+                case 'd':
+                    strafingRight=TRUE;
+                    break;
+                case 'r':
+                    movingUp=TRUE;
+                    break;
+                case 'f':
+                    movingDown=TRUE;
+                    break;
+                case 'i':
+                    panningUp=TRUE;
+                    break;
+                case 'j':
+                    panningLeft=TRUE;
+                    break;
+                case 'k':
+                    panningDown=TRUE;
+                    break;
+                case 'l':
+                    panningRight=TRUE;
+                    break;
+                case '1':
+                    followingTrain=!followingTrain;
+                    trainChase = FALSE;
+                    break;
+                case '2':
+                    trainChase=!trainChase;
+                    followingTrain = FALSE;
+                    break;
+                case '3':
+                    lookAtCarousel=TRUE;
+                    break;
+            }
+            }
+        }
+    }
+
+    -(void)keyUp:(NSEvent *)theEvent
+{
+    NSString *characters = [theEvent characters];
     if ([characters length]) {
         unichar character = [characters characterAtIndex:0];
 		switch (character) {
-			case 'h':
-				// toggle help
-				fDrawHelp = 1 - fDrawHelp;
-				[self setNeedsDisplay: YES];
-				break;
-			case 'c':
-				// toggle caps
-				fDrawCaps = 1 - fDrawCaps;
-				[self setNeedsDisplay: YES];
-				break;
+            case 'w':
+                movingForward=FALSE;
+                break;
+            case 'a':
+                strafingLeft=FALSE;
+                break;
+            case 's':
+                movingBackward=FALSE;
+                break;
+            case 'd':
+                strafingRight=FALSE;
+                break;
+            case 'r':
+                movingUp=FALSE;
+                break;
+            case 'f':
+                movingDown=FALSE;
+                break;
+            case 'i':
+                panningUp=FALSE;
+                break;
+            case 'j':
+                panningLeft=FALSE;
+                break;
+            case 'k':
+                panningDown=FALSE;
+                break;
+            case 'l':
+                panningRight=FALSE;
+                break;
+            case 'p':
+                NSLog(@"%@",camera);
+                break;
 		}
 	}
 }
+
+
 
 // ---------------------------------
 
 - (void)mouseDown:(NSEvent *)theEvent // trackball
 {
-    if ([theEvent modifierFlags] & NSControlKeyMask) // send to pan
+    if ([theEvent modifierFlags] & NSControlKeyMask){ // send to pan
+        NSLog(@"Start Pan");
 		[self rightMouseDown:theEvent];
-	else if ([theEvent modifierFlags] & NSAlternateKeyMask) // send to dolly
+    }
+	else if ([theEvent modifierFlags] & NSAlternateKeyMask){ // send to dolly
+        NSLog(@"Start Dolly");
 		[self otherMouseDown:theEvent];
+    }
 	else {
 		NSPoint location = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 		location.y = camera.viewHeight - location.y;
@@ -573,55 +656,55 @@ static void drawCube (GLfloat fSize)
 
 - (void)rightMouseDown:(NSEvent *)theEvent // pan
 {
-	NSPoint location = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	location.y = camera.viewHeight - location.y;
-	if (gTrackball) { // if we are currently tracking, end trackball
-		if (gTrackBallRotation[0] != 0.0)
-			addToRotationTrackball (gTrackBallRotation, worldRotation);
-		gTrackBallRotation [0] = gTrackBallRotation [1] = gTrackBallRotation [2] = gTrackBallRotation [3] = 0.0f;
-	}
-	gDolly = GL_FALSE; // no dolly
-	gPan = GL_TRUE; 
-	gTrackball = GL_FALSE; // no trackball
-	gDollyPanStartPoint[0] = location.x;
-	gDollyPanStartPoint[1] = location.y;
-	gTrackingViewInfo = self;
+//	NSPoint location = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+//	location.y = camera.viewHeight - location.y;
+//	if (gTrackball) { // if we are currently tracking, end trackball
+//		if (gTrackBallRotation[0] != 0.0)
+//			addToRotationTrackball (gTrackBallRotation, worldRotation);
+//		gTrackBallRotation [0] = gTrackBallRotation [1] = gTrackBallRotation [2] = gTrackBallRotation [3] = 0.0f;
+//	}
+//	gDolly = GL_FALSE; // no dolly
+//	gPan = GL_TRUE; 
+//	gTrackball = GL_FALSE; // no trackball
+//	gDollyPanStartPoint[0] = location.x;
+//	gDollyPanStartPoint[1] = location.y;
+//	gTrackingViewInfo = self;
 }
 
 // ---------------------------------
 
 - (void)otherMouseDown:(NSEvent *)theEvent //dolly
 {
-	NSPoint location = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	location.y = camera.viewHeight - location.y;
-	if (gTrackball) { // if we are currently tracking, end trackball
-		if (gTrackBallRotation[0] != 0.0)
-			addToRotationTrackball (gTrackBallRotation, worldRotation);
-		gTrackBallRotation [0] = gTrackBallRotation [1] = gTrackBallRotation [2] = gTrackBallRotation [3] = 0.0f;
-	}
-	gDolly = GL_TRUE;
-	gPan = GL_FALSE; // no pan
-	gTrackball = GL_FALSE; // no trackball
-	gDollyPanStartPoint[0] = location.x;
-	gDollyPanStartPoint[1] = location.y;
-	gTrackingViewInfo = self;
+//	NSPoint location = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+//	location.y = camera.viewHeight - location.y;
+//	if (gTrackball) { // if we are currently tracking, end trackball
+//		if (gTrackBallRotation[0] != 0.0)
+//			addToRotationTrackball (gTrackBallRotation, worldRotation);
+//		gTrackBallRotation [0] = gTrackBallRotation [1] = gTrackBallRotation [2] = gTrackBallRotation [3] = 0.0f;
+//	}
+//	gDolly = GL_TRUE;
+//	gPan = GL_FALSE; // no pan
+//	gTrackball = GL_FALSE; // no trackball
+//	gDollyPanStartPoint[0] = location.x;
+//	gDollyPanStartPoint[1] = location.y;
+//	gTrackingViewInfo = self;
 }
 
 // ---------------------------------
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
-	if (gDolly) { // end dolly
-		gDolly = GL_FALSE;
-	} else if (gPan) { // end pan
-		gPan = GL_FALSE;
-	} else if (gTrackball) { // end trackball
-		gTrackball = GL_FALSE;
-		if (gTrackBallRotation[0] != 0.0)
-			addToRotationTrackball (gTrackBallRotation, worldRotation);
-		gTrackBallRotation [0] = gTrackBallRotation [1] = gTrackBallRotation [2] = gTrackBallRotation [3] = 0.0f;
-	} 
-	gTrackingViewInfo = NULL;
+//	if (gDolly) { // end dolly
+//		gDolly = GL_FALSE;
+//	} else if (gPan) { // end pan
+//		gPan = GL_FALSE;
+//	} else if (gTrackball) { // end trackball
+//		gTrackball = GL_FALSE;
+//		if (gTrackBallRotation[0] != 0.0)
+//			addToRotationTrackball (gTrackBallRotation, worldRotation);
+//		gTrackBallRotation [0] = gTrackBallRotation [1] = gTrackBallRotation [2] = gTrackBallRotation [3] = 0.0f;
+//	} 
+//	gTrackingViewInfo = NULL;
 }
 
 // ---------------------------------
@@ -638,7 +721,7 @@ static void drawCube (GLfloat fSize)
 	[self mouseUp:theEvent];
 }
 
-// ---------------------------------
+// --------------------------------
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
@@ -661,18 +744,18 @@ static void drawCube (GLfloat fSize)
 
 - (void)scrollWheel:(NSEvent *)theEvent
 {
-	float wheelDelta = [theEvent deltaX] +[theEvent deltaY] + [theEvent deltaZ];
-	if (wheelDelta)
-	{
-		GLfloat deltaAperture = wheelDelta * -camera.aperture / 200.0f;
-		camera.aperture += deltaAperture;
-		if (camera.aperture < 0.1) // do not let aperture <= 0.1
-			camera.aperture = 0.1;
-		if (camera.aperture > 179.9) // do not let aperture >= 180
-			camera.aperture = 179.9;
-		[self updateProjection]; // update projection matrix
-		[self setNeedsDisplay: YES];
-	}
+//	float wheelDelta = [theEvent deltaX] +[theEvent deltaY] + [theEvent deltaZ];
+//	if (wheelDelta)
+//	{
+//		GLfloat deltaAperture = wheelDelta * -camera.aperture / 200.0f;
+//		camera.aperture += deltaAperture;
+//		if (camera.aperture < 0.1) // do not let aperture <= 0.1
+//			camera.aperture = 0.1;
+//		if (camera.aperture > 179.9) // do not let aperture >= 180
+//			camera.aperture = 179.9;
+//		[self updateProjection]; // update projection matrix
+//		[self setNeedsDisplay: YES];
+//	}
 }
 
 // ---------------------------------
@@ -692,25 +775,21 @@ static void drawCube (GLfloat fSize)
 // ---------------------------------
 
 - (void) drawRect:(NSRect)rect
-{		
-	// setup viewport and prespective
+{
+    float dir[4];
 	[self resizeGL]; // forces projection matrix update (does test for size changes)
 	[self updateModelView];  // update model view matrix for object
-
-	// clear our drawable
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	// model view and projection matricies already set
-
-//	drawCube (1.5f); // draw scene
+    dir[0] = 1.0; dir[1] = 1.0; dir[2] = 1.0; dir[3] = 0.0;
+    glLightfv(GL_LIGHT0, GL_POSITION, dir);
+    
     [ground draw];
     [track draw];
     [carousel draw];
-    
-    
-    if (fInfo)
-		[self drawInfo];
-		
+    [sidewalk draw];
+    [tent draw];
+//    [faceRenderer render];
+
 	if ([self inLiveResize] && !fAnimate)
 		glFlush ();
 	else
@@ -724,22 +803,18 @@ static void drawCube (GLfloat fSize)
 // called after context is created
 - (void) prepareOpenGL
 {
-        float   color[4], dir[4];
+    float   color[4];
     long swapInt = 1;
 
     [[self openGLContext] setValues:(GLint*)&swapInt forParameter:NSOpenGLCPSwapInterval]; // set to vbl sync
-
-
-    
-    
-    
     
     // Sets the clear color to sky blue.
 	glClearColor(0.53f, 0.81f, 0.92f, 1.0);
+    glClearDepth(1.0f);
     
 	// Turn on depth testing
 	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
+	glDepthFunc(GL_LEQUAL);
     
 	// Turn on back face culling. Faces with normals away from the viewer
 	// will not be drawn.
@@ -766,8 +841,18 @@ static void drawCube (GLfloat fSize)
     
 
     
+//    Trying that renderer thing
+//    NSError * err;
+//    
+//    NSOpenGLContext *context = [self openGLContext];
+//    
+//    faceRenderer = [SCNRenderer rendererWithContext:context.CGLContextObj options:nil];
+//    NSURL *faceURL = [[NSBundle mainBundle] URLForResource:@"jeremy" withExtension:@"dae"];
+//    faceRenderer.scene = [SCNScene sceneWithURL:faceURL options:nil error:nil];
+//    [faceRenderer render];
+    
+    
 	[self resetCamera];
-	shapeSize = 100.0f; // max radius of of objects
 
 	// init fonts for use with strings
 	NSFont * font =[NSFont fontWithName:@"Helvetica" size:12.0];
@@ -783,6 +868,8 @@ static void drawCube (GLfloat fSize)
     [ground initialize];
     [track initialize];
     [carousel initialize];
+    [sidewalk initialize];
+    [tent initialize];
     
 
 }
@@ -806,10 +893,6 @@ msgTime	= getElapsedTime ();
 -(id) initWithFrame: (NSRect) frameRect
 {
 	NSOpenGLPixelFormat * pf = [BasicOpenGLView basicPixelFormat];
-    
-    
-    
-    
 	self = [super initWithFrame: frameRect pixelFormat: pf];
     return self;
 }
@@ -850,12 +933,25 @@ msgTime	= getElapsedTime ();
 	time = CFAbsoluteTimeGetCurrent ();  // set animation time start time
 	fDrawHelp = 1;
 
+    camera = [[MyCamera alloc] init];
+    followingTrain = FALSE;
+    trainChase = FALSE;
+    lookAtCarousel = FALSE;
+    
+    
+    phi = 45.0f;
+    theta = 0.0f;
+    dist = 100.0f;
+    x_at = 0.0f;
+    y_at = 0.0f;
     
     
     
     ground = [[MyGround alloc] init];
     track = [[MyTrack alloc] init];
-    carousel = [[MyCarousel alloc] init]; 
+    carousel = [[MyCarousel alloc] init];
+    sidewalk = [[MySidewalk alloc] init];
+    tent =  [[TentOfRevolution alloc] init];
     
     
 	// start animation timer

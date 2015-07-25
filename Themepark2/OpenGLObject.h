@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "OpenGL/gl.h"
+#import "OpenGL/glu.h"
 #import "math.h"
-
+#include <GLUT/glut.h>
+#include "CubicBspline.h"
 
 @interface OpenGLObject : NSObject{
     
@@ -18,6 +20,8 @@
 -(id) init;
 
 - (void) dealloc;
--(void) makeTextureFromImage:(NSImage*)theImg forTexture:(GLuint*)texName;
+//-(void) makeTextureFromImage:(NSImage*)theImg forTexture:(GLuint*)texName;
+- (void) Normalize_3: (float*) v;
+
 
 @end

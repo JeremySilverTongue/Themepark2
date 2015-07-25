@@ -9,7 +9,7 @@
 //#include "libtarga.h"
 #include <stdio.h>
 #include <OpenGl/glu.h>
-#include ""
+
 
 // Destructor
 Ground::~Ground(void)

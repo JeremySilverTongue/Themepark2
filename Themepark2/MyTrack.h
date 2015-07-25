@@ -7,8 +7,8 @@
 //
 
 #import "OpenGLObject.h"
-#import <OpenGL/gl.h>
-#include "CubicBspline.h"
+#import "MyTrainCar.h"
+#import "MyCamera.h"
 
 @interface MyTrack : OpenGLObject{
     GLubyte 	    track_list;	    // The display list for the track.
@@ -22,10 +22,12 @@
     int	TRACK_NUM_CONTROLS;	// Constants about the track.
     float** 	TRACK_CONTROLS;
     float 	TRAIN_ENERGY;
+
+    NSMutableArray* cars;
+    
 }
 
 
-- (void) Normalize_3: (float*) v;
 
 
 - (id) init;
@@ -33,5 +35,8 @@
 - (void) update: (float) dt;
 - (void) draw;
 - (void) dealloc;
+
+- (void) moveCameraToCar: (MyCamera*) camera;
+- (void) moveCameraToChaseCar: (MyCamera*) camera;
 
 @end

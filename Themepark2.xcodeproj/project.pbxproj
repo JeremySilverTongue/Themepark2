@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7202FD615101DBC00FBCEEC /* MyTrainCar.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7202FD515101DBC00FBCEEC /* MyTrainCar.mm */; };
 		D7286635150E318000E3A6E9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7286634150E318000E3A6E9 /* Cocoa.framework */; };
 		D728663F150E318000E3A6E9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D728663D150E318000E3A6E9 /* InfoPlist.strings */; };
 		D7286641150E318000E3A6E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7286640150E318000E3A6E9 /* main.m */; };
@@ -27,10 +28,40 @@
 		D7694DCD150EC2F40079A474 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7694DCC150EC2F40079A474 /* ApplicationServices.framework */; };
 		D7694DD0150EC6250079A474 /* OpenGLObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7694DCF150EC6250079A474 /* OpenGLObject.mm */; };
 		D7694DD3150FC2B90079A474 /* MyTrack.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7694DD2150FC2B90079A474 /* MyTrack.mm */; };
+		D79046DC150FF3C1006BD3FE /* MyCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = D79046DB150FF3C1006BD3FE /* MyCamera.mm */; };
+		D79046E115100317006BD3FE /* MyHorse.mm in Sources */ = {isa = PBXBuildFile; fileRef = D79046E015100317006BD3FE /* MyHorse.mm */; };
+		D79046E315100A54006BD3FE /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D79046E215100A54006BD3FE /* GLUT.framework */; };
+		D7C3A52A1512DD850054E900 /* CameraVector.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7C3A5291512DD850054E900 /* CameraVector.mm */; };
+		D7C3A52D1512FF360054E900 /* MyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C3A52C1512FF360054E900 /* MyWindow.m */; };
+		D7C3A5351513081A0054E900 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7C3A5341513081A0054E900 /* SenTestingKit.framework */; };
+		D7C3A5361513081A0054E900 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7286634150E318000E3A6E9 /* Cocoa.framework */; };
+		D7C3A53C1513081A0054E900 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7C3A53A1513081A0054E900 /* InfoPlist.strings */; };
+		D7C3A53F1513081A0054E900 /* CameraTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7C3A53E1513081A0054E900 /* CameraTests.mm */; };
+		D7C3A54415130CBC0054E900 /* MyCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = D79046DB150FF3C1006BD3FE /* MyCamera.mm */; };
+		D7C3A57515130D370054E900 /* CameraVector.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7C3A5291512DD850054E900 /* CameraVector.mm */; };
 		D7C3FEDB150FDE1500B12FA8 /* MyCarousel.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7C3FEDA150FDE1500B12FA8 /* MyCarousel.mm */; };
+		D7C47CFF169B7E9A00A61A4B /* jeremy.dae in Resources */ = {isa = PBXBuildFile; fileRef = D7C47CFE169B7E9A00A61A4B /* jeremy.dae */; };
+		D7C47D02169B7ECB00A61A4B /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7C47D01169B7ECB00A61A4B /* SceneKit.framework */; };
+		D7C47D04169B7EF300A61A4B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7C47D03169B7EF300A61A4B /* QuartzCore.framework */; };
+		D7C47D08169B822500A61A4B /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7C47D01169B7ECB00A61A4B /* SceneKit.framework */; };
+		D7EE37CA1513D94600ECC8A5 /* MySidewalk.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7EE37C91513D94600ECC8A5 /* MySidewalk.mm */; };
+		D7EE37CD1513D97E00ECC8A5 /* sidewalk-texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D7EE37CC1513D97E00ECC8A5 /* sidewalk-texture.jpg */; };
+		D7EE37D01513DEB300ECC8A5 /* TentOfRevolution.mm in Sources */ = {isa = PBXBuildFile; fileRef = D7EE37CF1513DEB300ECC8A5 /* TentOfRevolution.mm */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D7C3A57315130D1A0054E900 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7286627150E318000E3A6E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D728662F150E318000E3A6E9;
+			remoteInfo = Themepark2;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		D7202FD415101DBC00FBCEEC /* MyTrainCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTrainCar.h; sourceTree = "<group>"; };
+		D7202FD515101DBC00FBCEEC /* MyTrainCar.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyTrainCar.mm; sourceTree = "<group>"; };
 		D7286630150E318000E3A6E9 /* Themepark2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Themepark2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7286634150E318000E3A6E9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D7286637150E318000E3A6E9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -73,8 +104,32 @@
 		D7694DCF150EC6250079A474 /* OpenGLObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLObject.mm; sourceTree = "<group>"; };
 		D7694DD1150FC2B80079A474 /* MyTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTrack.h; sourceTree = "<group>"; };
 		D7694DD2150FC2B90079A474 /* MyTrack.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyTrack.mm; sourceTree = "<group>"; };
+		D79046DA150FF3C1006BD3FE /* MyCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCamera.h; sourceTree = "<group>"; };
+		D79046DB150FF3C1006BD3FE /* MyCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyCamera.mm; sourceTree = "<group>"; };
+		D79046DF15100317006BD3FE /* MyHorse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHorse.h; sourceTree = "<group>"; };
+		D79046E015100317006BD3FE /* MyHorse.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyHorse.mm; sourceTree = "<group>"; };
+		D79046E215100A54006BD3FE /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		D7C3A5281512DD850054E900 /* CameraVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraVector.h; sourceTree = "<group>"; };
+		D7C3A5291512DD850054E900 /* CameraVector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraVector.mm; sourceTree = "<group>"; };
+		D7C3A52B1512FF350054E900 /* MyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWindow.h; sourceTree = "<group>"; };
+		D7C3A52C1512FF360054E900 /* MyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWindow.m; sourceTree = "<group>"; };
+		D7C3A5331513081A0054E900 /* CameraTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CameraTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C3A5341513081A0054E900 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D7C3A5391513081A0054E900 /* CameraTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CameraTests-Info.plist"; sourceTree = "<group>"; };
+		D7C3A53B1513081A0054E900 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D7C3A53D1513081A0054E900 /* CameraTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraTests.h; sourceTree = "<group>"; };
+		D7C3A53E1513081A0054E900 /* CameraTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraTests.mm; sourceTree = "<group>"; };
+		D7C3A5401513081A0054E900 /* CameraTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CameraTests-Prefix.pch"; sourceTree = "<group>"; };
 		D7C3FED9150FDE1500B12FA8 /* MyCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCarousel.h; sourceTree = "<group>"; };
 		D7C3FEDA150FDE1500B12FA8 /* MyCarousel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyCarousel.mm; sourceTree = "<group>"; };
+		D7C47CFE169B7E9A00A61A4B /* jeremy.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = jeremy.dae; sourceTree = "<group>"; };
+		D7C47D01169B7ECB00A61A4B /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		D7C47D03169B7EF300A61A4B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D7EE37C81513D94600ECC8A5 /* MySidewalk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySidewalk.h; sourceTree = "<group>"; };
+		D7EE37C91513D94600ECC8A5 /* MySidewalk.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MySidewalk.mm; sourceTree = "<group>"; };
+		D7EE37CC1513D97E00ECC8A5 /* sidewalk-texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sidewalk-texture.jpg"; sourceTree = "<group>"; };
+		D7EE37CE1513DEB300ECC8A5 /* TentOfRevolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TentOfRevolution.h; sourceTree = "<group>"; };
+		D7EE37CF1513DEB300ECC8A5 /* TentOfRevolution.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TentOfRevolution.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +137,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7C47D08169B822500A61A4B /* SceneKit.framework in Frameworks */,
+				D79046E315100A54006BD3FE /* GLUT.framework in Frameworks */,
 				D7694DCD150EC2F40079A474 /* ApplicationServices.framework in Frameworks */,
 				D7286665150E6EB700E3A6E9 /* OpenGL.framework in Frameworks */,
 				D7286635150E318000E3A6E9 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C3A52F1513081A0054E900 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C47D04169B7EF300A61A4B /* QuartzCore.framework in Frameworks */,
+				D7C47D02169B7ECB00A61A4B /* SceneKit.framework in Frameworks */,
+				D7C3A5351513081A0054E900 /* SenTestingKit.framework in Frameworks */,
+				D7C3A5361513081A0054E900 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +162,10 @@
 		D7286625150E318000E3A6E9 = {
 			isa = PBXGroup;
 			children = (
+				D7C47D03169B7EF300A61A4B /* QuartzCore.framework */,
+				D7C47D01169B7ECB00A61A4B /* SceneKit.framework */,
 				D728663A150E318000E3A6E9 /* Themepark2 */,
+				D7C3A5371513081A0054E900 /* CameraTests */,
 				D7286633150E318000E3A6E9 /* Frameworks */,
 				D7286631150E318000E3A6E9 /* Products */,
 			);
@@ -104,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				D7286630150E318000E3A6E9 /* Themepark2.app */,
+				D7C3A5331513081A0054E900 /* CameraTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,9 +183,11 @@
 		D7286633150E318000E3A6E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D79046E215100A54006BD3FE /* GLUT.framework */,
 				D7694DCC150EC2F40079A474 /* ApplicationServices.framework */,
 				D7286664150E6EB700E3A6E9 /* OpenGL.framework */,
 				D7286634150E318000E3A6E9 /* Cocoa.framework */,
+				D7C3A5341513081A0054E900 /* SenTestingKit.framework */,
 				D7286636150E318000E3A6E9 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -132,6 +206,10 @@
 		D728663A150E318000E3A6E9 /* Themepark2 */ = {
 			isa = PBXGroup;
 			children = (
+				D7C47CFE169B7E9A00A61A4B /* jeremy.dae */,
+				D7C3A52B1512FF350054E900 /* MyWindow.h */,
+				D7C3A52C1512FF360054E900 /* MyWindow.m */,
+				D79046DE150FF3CA006BD3FE /* Utilites */,
 				D7694DD4150FC2C30079A474 /* OpenGlObjects */,
 				D7694DC4150EBD550079A474 /* Textures */,
 				D7286666150E730400E3A6E9 /* Files from project 2 skeleton */,
@@ -193,6 +271,7 @@
 		D7694DC4150EBD550079A474 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				D7EE37CC1513D97E00ECC8A5 /* sidewalk-texture.jpg */,
 				D7694DC2150EBD450079A474 /* grass-texture.jpg */,
 			);
 			name = Textures;
@@ -201,16 +280,55 @@
 		D7694DD4150FC2C30079A474 /* OpenGlObjects */ = {
 			isa = PBXGroup;
 			children = (
+				D7EE37CE1513DEB300ECC8A5 /* TentOfRevolution.h */,
+				D7EE37CF1513DEB300ECC8A5 /* TentOfRevolution.mm */,
 				D7694DC5150EBFF10079A474 /* MyGround.h */,
 				D7694DC6150EBFF10079A474 /* MyGround.mm */,
+				D7EE37C81513D94600ECC8A5 /* MySidewalk.h */,
+				D7EE37C91513D94600ECC8A5 /* MySidewalk.mm */,
 				D7C3FED9150FDE1500B12FA8 /* MyCarousel.h */,
 				D7C3FEDA150FDE1500B12FA8 /* MyCarousel.mm */,
+				D79046DF15100317006BD3FE /* MyHorse.h */,
+				D79046E015100317006BD3FE /* MyHorse.mm */,
 				D7694DCE150EC6250079A474 /* OpenGLObject.h */,
 				D7694DCF150EC6250079A474 /* OpenGLObject.mm */,
 				D7694DD1150FC2B80079A474 /* MyTrack.h */,
 				D7694DD2150FC2B90079A474 /* MyTrack.mm */,
+				D7202FD415101DBC00FBCEEC /* MyTrainCar.h */,
+				D7202FD515101DBC00FBCEEC /* MyTrainCar.mm */,
 			);
 			name = OpenGlObjects;
+			sourceTree = "<group>";
+		};
+		D79046DE150FF3CA006BD3FE /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				D79046DA150FF3C1006BD3FE /* MyCamera.h */,
+				D79046DB150FF3C1006BD3FE /* MyCamera.mm */,
+				D7C3A5281512DD850054E900 /* CameraVector.h */,
+				D7C3A5291512DD850054E900 /* CameraVector.mm */,
+			);
+			name = Utilites;
+			sourceTree = "<group>";
+		};
+		D7C3A5371513081A0054E900 /* CameraTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7C3A53D1513081A0054E900 /* CameraTests.h */,
+				D7C3A53E1513081A0054E900 /* CameraTests.mm */,
+				D7C3A5381513081A0054E900 /* Supporting Files */,
+			);
+			path = CameraTests;
+			sourceTree = "<group>";
+		};
+		D7C3A5381513081A0054E900 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7C3A5391513081A0054E900 /* CameraTests-Info.plist */,
+				D7C3A53A1513081A0054E900 /* InfoPlist.strings */,
+				D7C3A5401513081A0054E900 /* CameraTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +351,25 @@
 			productReference = D7286630150E318000E3A6E9 /* Themepark2.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D7C3A5321513081A0054E900 /* CameraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7C3A5411513081A0054E900 /* Build configuration list for PBXNativeTarget "CameraTests" */;
+			buildPhases = (
+				D7C3A52E1513081A0054E900 /* Sources */,
+				D7C3A52F1513081A0054E900 /* Frameworks */,
+				D7C3A5301513081A0054E900 /* Resources */,
+				D7C3A5311513081A0054E900 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7C3A57415130D1A0054E900 /* PBXTargetDependency */,
+			);
+			name = CameraTests;
+			productName = CameraTests;
+			productReference = D7C3A5331513081A0054E900 /* CameraTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -254,6 +391,7 @@
 			projectRoot = "";
 			targets = (
 				D728662F150E318000E3A6E9 /* Themepark2 */,
+				D7C3A5321513081A0054E900 /* CameraTests */,
 			);
 		};
 /* End PBXProject section */
@@ -267,10 +405,36 @@
 				D7286645150E318000E3A6E9 /* Credits.rtf in Resources */,
 				D728664B150E318000E3A6E9 /* MainMenu.xib in Resources */,
 				D7694DC3150EBD450079A474 /* grass-texture.jpg in Resources */,
+				D7EE37CD1513D97E00ECC8A5 /* sidewalk-texture.jpg in Resources */,
+				D7C47CFF169B7E9A00A61A4B /* jeremy.dae in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C3A5301513081A0054E900 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C3A53C1513081A0054E900 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D7C3A5311513081A0054E900 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D728662C150E318000E3A6E9 /* Sources */ = {
@@ -291,10 +455,35 @@
 				D7694DD0150EC6250079A474 /* OpenGLObject.mm in Sources */,
 				D7694DD3150FC2B90079A474 /* MyTrack.mm in Sources */,
 				D7C3FEDB150FDE1500B12FA8 /* MyCarousel.mm in Sources */,
+				D79046DC150FF3C1006BD3FE /* MyCamera.mm in Sources */,
+				D79046E115100317006BD3FE /* MyHorse.mm in Sources */,
+				D7202FD615101DBC00FBCEEC /* MyTrainCar.mm in Sources */,
+				D7C3A52A1512DD850054E900 /* CameraVector.mm in Sources */,
+				D7C3A52D1512FF360054E900 /* MyWindow.m in Sources */,
+				D7EE37CA1513D94600ECC8A5 /* MySidewalk.mm in Sources */,
+				D7EE37D01513DEB300ECC8A5 /* TentOfRevolution.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C3A52E1513081A0054E900 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C3A57515130D370054E900 /* CameraVector.mm in Sources */,
+				D7C3A53F1513081A0054E900 /* CameraTests.mm in Sources */,
+				D7C3A54415130CBC0054E900 /* MyCamera.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D7C3A57415130D1A0054E900 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D728662F150E318000E3A6E9 /* Themepark2 */;
+			targetProxy = D7C3A57315130D1A0054E900 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D728663D150E318000E3A6E9 /* InfoPlist.strings */ = {
@@ -319,6 +508,14 @@
 				D728664A150E318000E3A6E9 /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		D7C3A53A1513081A0054E900 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7C3A53B1513081A0054E900 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -391,6 +588,30 @@
 			};
 			name = Release;
 		};
+		D7C3A5421513081A0054E900 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CameraTests/CameraTests-Prefix.pch";
+				INFOPLIST_FILE = "CameraTests/CameraTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D7C3A5431513081A0054E900 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CameraTests/CameraTests-Prefix.pch";
+				INFOPLIST_FILE = "CameraTests/CameraTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -408,6 +629,15 @@
 			buildConfigurations = (
 				D728664F150E318000E3A6E9 /* Debug */,
 				D7286650150E318000E3A6E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7C3A5411513081A0054E900 /* Build configuration list for PBXNativeTarget "CameraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7C3A5421513081A0054E900 /* Debug */,
+				D7C3A5431513081A0054E900 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
