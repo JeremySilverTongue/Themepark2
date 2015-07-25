@@ -1,5 +1,5 @@
 # Themepark2
-A project for a computer graphics at PSU.
+A project for a computer graphics class at PSU.
 
 If by some miricle you get it to build, the controls are:
 
